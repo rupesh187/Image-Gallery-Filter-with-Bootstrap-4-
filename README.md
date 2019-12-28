@@ -1,2 +1,3 @@
-# Image-Gallery-Filter-with-Bootstrap-4-
-Filter Gallery With Responsive Bootstarp 4
+# Image-Gallery-Filter-with-Bootstrap-4-JavaScript
+Filter Gallery With Responsive Bootstrap and JavaScript
+
