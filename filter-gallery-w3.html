@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+        background:#e2e2e2;
+      }
+      .box{
+        padding: 8px;
+        display: none;
+      }
+      .content {
+        background-color: white;
+        padding: 10px;
+      }
+      .content img{
+        width: 100%;
+        height: 100%;
+      }
+      /* The "show" class is added to the filtered elements */
+      .show {
+        display: block;
+      }
+
+      .btn {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 0px;
+      }
+
+  /*    .btn:hover {
+        background-color: #ddd;
+      }
+*/
+      .btn.active , .btn:hover {
+        background-color: #666;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+   
+   <section>
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-12 text-center">
+           <h1 class="py-4">Image Filter Gallery with Bootstrap 4</h1>
+            <div id="myBtnContainer d-flex justify-content-center">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('animal')"> Animal</button>
+                <button class="btn" onclick="filterSelection('bird')"> Bird</button>
+                <button class="btn" onclick="filterSelection('flower')"> flower</button>
+            </div>
+            <div class="row py-4">
+               <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box animal">
+                  <div class="content">
+                      <img src="images/filter-img/animal2.jpg" class="img-fluid" alt="animal">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box animal">
+                  <div class="content">
+                    <img src="images/filter-img/animal2.jpg" class="img-fluid" alt="animal">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box bird">
+                  <div class="content">
+                    <img src="images/filter-img/bird1.jpg" class="img-fluid" alt="Bird">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box bird">
+                  <div class="content">
+                    <img src="images/filter-img/bird1.jpg" class="img-fluid" alt="Bird">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box flower">
+                  <div class="content">
+                    <img src="images/filter-img/flower1.jpg" class="img-fluid" alt="flower">
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 co-xs-12 box flower">
+                  <div class="content">
+                    <img src="images/filter-img/flower1.jpg" class="img-fluid" alt="flower">
+                  </div>
+              </div>
+            </div>
+         </div>
+       </div>
+     </div>
+   </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+
+
+          filterSelection("all") // Execute the function and show all columns
+          function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("box");
+            if (c == "all") c = "";
+            // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+            for (i = 0; i < x.length; i++) {
+              w3RemoveClass(x[i], "show");
+              if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+          }
+
+          // Show filtered elements
+          function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+              if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
+              }
+            }
+          }
+
+          // Hide elements that are not selected
+          function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+              while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+              }
+            }
+            element.className = arr1.join(" ");
+          }
+
+          // Add active class to the current button (highlight it)
+          var btnContainer = document.getElementById("myBtnContainer");
+          var btns = btnContainer.getElementsByClassName("btn");
+          for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function(){
+              var current = document.getElementsByClassName("active");
+              current[0].className = current[0].className.replace(" active", "");
+              this.className += " active";
+            });
+          }
+    </script>
+  </body>
+</html>
